@@ -1,0 +1,63 @@
+{
+  "name": "lol-stats-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@funnyfoo/create-reducer-redux": "^1.1.1",
+    "classnames": "^2.2.6",
+    "history": "^4.7.2",
+    "lodash": "^4.17.10",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.0.0-next.66cc7a90",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^0.16.0",
+    "redux-thunk": "^2.3.0",
+    "reset-css": "^4.0.1",
+    "sass-rem": "^2.0.1",
+    "store": "^2.0.12"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build",
+    "build": "react-scripts build",
+    "precommit": "lint-staged",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
+  },
+  "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.2.0",
+    "node-sass": "^4.9.2",
+    "prettier": "^1.13.7",
+    "react-hot-loader": "^4.3.4",
+    "react-styleguidist": "6.5.3"
+  },
+  "lint-staged": {
+    "linters": {
+      "src/**/*.{js,jsx,css,scss}": [
+        "prettier --write",
+        "git add"
+      ]
+    }
+  }
+}
