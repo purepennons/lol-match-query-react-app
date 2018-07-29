@@ -1,4 +1,5 @@
 import { isString } from "lodash";
+import qs from "qs";
 
 export const createRequestTypes = base => {
   if (!isString(base)) return {};
@@ -9,4 +10,8 @@ export const createRequestTypes = base => {
   }, {});
   if (base) types[base] = base;
   return types;
+};
+
+export const stringifyWithDefaultQuery = defaultQuery => query => {
+  return qs.stringify({ ...defaultQuery, ...query });
 };
