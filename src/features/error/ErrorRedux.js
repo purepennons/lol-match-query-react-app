@@ -9,8 +9,8 @@ import createReducer from "@funnyfoo/create-reducer-redux";
 * ---------------- Action ------------------------
 */
 export const Types = {
-  ADD_ERROR: "ADD_ERROR",
-  REMOVE_ERROR: "REMOVE_ERROR"
+  ADD_ERROR: Symbol("ADD_ERROR"),
+  REMOVE_ERROR: Symbol("REMOVE_ERROR")
 };
 
 /*

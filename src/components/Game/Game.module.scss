@@ -1,0 +1,104 @@
+@import "../../styles/_mixin.scss";
+@import "../../styles/_variables.scss";
+@import "sass-rem";
+
+.game {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid $borderColor;
+  padding: 10px;
+  margin: 20px;
+}
+
+.status {
+  text-align: center;
+
+  h2 {
+    font-size: rem(20px);
+    font-weight: 700;
+  }
+}
+
+.team-block {
+  li {
+    $width: 100px;
+    $height: 22px;
+
+    @include ellipsis($width);
+    width: $width;
+    height: $height;
+
+    img {
+      height: 100%;
+      vertical-align: top;
+    }
+
+    span {
+      vertical-align: top;
+      display: inline-block;
+      height: 100%;
+      line-height: $height;
+    }
+  }
+}
+
+.champion {
+  .top {
+    .profile {
+      height: 50px;
+      display: inline-block;
+      border: 2px solid $borderColor;
+      border-radius: 50%;
+
+      img {
+        border-radius: 50%;
+        height: 100%;
+      }
+    }
+
+    .spells {
+      display: inline-block;
+
+      img {
+        height: 25px;
+        display: block;
+      }
+    }
+  }
+
+  .bottom {
+    text-align: center;
+  }
+}
+
+.perform {
+  font-size: rem(20px);
+  font-weight: 600;
+  text-align: center;
+}
+
+.champion-info {
+  text-align: center;
+}
+
+.win {
+  background: lighten($color: $winColor, $amount: 30%);
+
+  .status {
+    h2 {
+      color: $winColor;
+    }
+  }
+}
+
+.defeat {
+  background: lighten($color: $defeatColor, $amount: 30%);
+
+  .status {
+    h2 {
+      color: $defeatColor;
+    }
+  }
+}

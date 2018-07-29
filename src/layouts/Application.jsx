@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 
 import NotFound from "../pages/error/NotFound";
+import Index from "../pages/Index";
 
 import history from "../shared/history";
 import styles from "./Application.module.scss";
@@ -22,6 +23,7 @@ class Application extends Component {
       <Router history={history}>
         <div className={styles["app-container"]}>
           <Switch>
+            <Route path="/" name="Index" component={Index} />
             <Route path="*" name="NotFound" component={NotFound} />
           </Switch>
         </div>

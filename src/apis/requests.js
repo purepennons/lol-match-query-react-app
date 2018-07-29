@@ -8,16 +8,21 @@ const qs = ajax.stringifyWithDefaultQuery({
 });
 
 const request = axios.create({
-  baseURL: Env.HOST
+  baseURL: "/lol"
 });
 
 const getURL = (base, query = {}) => {
   return base + "?" + qs(query);
 };
 
+// summoner
+export const getUserByName = name => {
+  return request.get(getURL(`/summoner/v3/summoners/by-name/${name}`));
+};
+
 // match
-export const getMatchesByAccountID = id => {
-  return request.get(getURL(`/match/v3/matchlists/by-account/${id}`));
+export const getMatchesByAccountID = (id, query = { startIndex: 0 }) => {
+  return request.get(getURL(`/match/v3/matchlists/by-account/${id}`, query));
 };
 
 export const getMatchByGameID = id => {
@@ -40,4 +45,9 @@ export const getSpells = (dataById = true) => {
 
 export const getSpellByID = id => {
   return request.get(getURL(`/static-data/v3/summoner-spells/${id}`));
+};
+
+// item
+export const getItems = () => {
+  return request.get(getURL(`/static-data/v3/items`));
 };

@@ -3,5 +3,6 @@
 
 import * as ajax from "./ajax";
 import * as logger from "./logger";
+import * as normalize from "./normalize";
 
-export { ajax, logger };
+export { ajax, logger, normalize };
