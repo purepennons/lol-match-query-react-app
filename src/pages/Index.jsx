@@ -6,24 +6,43 @@ import classnames from "classnames/bind";
 import { queryGamesByName } from "../features/game/GameRedux";
 import SearchBar from "../components/SearchBar/SearchBar";
 import MatchList from "../features/game/containers/MatchList";
+import { loadMore } from "../features/game/GameRedux";
 import styles from "./Index.module.scss";
 
 const cx = classnames.bind(styles);
 
 const enhance = compose(
   connect(
-    null,
-    dispatch => bindActionCreators({ queryGamesByName }, dispatch)
+    ({ game }) => ({
+      page: game.page,
+      summonerGames: game.summonerGames,
+      isFetching: game.isFetching
+    }),
+    dispatch => bindActionCreators({ queryGamesByName, loadMore }, dispatch)
   )
 );
 
-const Index = ({ queryGamesByName }) => {
+const Index = ({
+  isFetching,
+  page,
+  summonerGames,
+  queryGamesByName,
+  loadMore
+}) => {
+  const { perPages, currentPage } = page;
+  const hasMoreData = perPages * currentPage < summonerGames.length;
   return (
     <div className={cx("index")}>
       <SearchBar onSearch={queryGamesByName} />
       <div className={cx("game-history")}>
         <MatchList />
       </div>
+      {hasMoreData && (
+        <button className={cx("load-more-btn")} onClick={loadMore}>
+          Load More
+        </button>
+      )}
+      {isFetching && <p className={cx("loader")}>Loading...</p>}
     </div>
   );
 };

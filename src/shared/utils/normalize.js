@@ -4,7 +4,7 @@ export const normalizePlayer = (participant, participantIdentity) => {
   const player = get(participantIdentity, ["player"]);
   const stats = get(participant, ["stats"]);
   return {
-    accountId: get(player, ["accountId"]),
+    accountId: get(player, ["currentAccountId"]),
     participantId: get(participantIdentity, ["participantId"]),
     teamId: get(participant, ["teamId"]),
     championId: get(participant, ["championId"]),

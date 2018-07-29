@@ -1,4 +1,22 @@
+@import "sass-rem";
+
 .index {
   max-width: 80vw;
-  margin: 0 auto;
+  margin: 30px auto;
+
+  .load-more-btn {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 50px;
+    background: rgb(34, 197, 121);
+    border: none;
+    border-radius: 3px;
+    font-size: rem(20px);
+  }
+}
+
+.loader {
+  text-align: center;
+  margin: 50px;
 }

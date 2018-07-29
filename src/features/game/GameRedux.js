@@ -89,8 +89,8 @@ export default createReducer(
       })
     ],
     [
-      (Types.SET_FETCHING_STATUS,
-      (state, { payload }) => ({ ...state, isFetching: payload.isFetching }))
+      Types.SET_FETCHING_STATUS,
+      (state, { payload }) => ({ ...state, isFetching: payload.isFetching })
     ],
     [Types.RESET_STATE, () => defaultValues]
   ],
@@ -139,6 +139,10 @@ export const resetState = () => ({
   type: Types.RESET_STATE
 });
 
+export const loadMore = () => ({
+  type: Types.LOAD_MORE_GAMES
+});
+
 /*
  * ---------------- Side Effects -----------------
  */
@@ -155,7 +159,7 @@ export const saga = {
         Types.QUERY_GAMES_BY_ACCOUNT_NAME,
         queryGamesByNameWorker
       ),
-      call(takeEvery, Types.LOAD_MORE_GAMES, loadMoreWorker)
+      fork(takeEvery, Types.LOAD_MORE_GAMES, loadMoreWorker)
     ]);
   }
 };
@@ -193,6 +197,7 @@ export function* queryGamesByNameWorker({ payload }) {
   try {
     const { name } = payload;
     const { data: user } = yield call(getUserByName, name);
+    yield put(setUser(user));
     yield call(initGameQuery, user.accountId);
 
     // first time fetching
