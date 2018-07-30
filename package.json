@@ -54,7 +54,8 @@
     "node-sass": "^4.9.2",
     "prettier": "^1.13.7",
     "react-hot-loader": "^4.3.4",
-    "react-styleguidist": "6.5.3"
+    "react-styleguidist": "6.5.3",
+    "redux-saga-test-plan": "^3.7.0"
   },
   "lint-staged": {
     "linters": {
