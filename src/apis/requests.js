@@ -30,8 +30,8 @@ export const getMatchByGameID = id => {
 };
 
 // champion
-export const getChampions = (dataById = true) => {
-  return request.get(getURL(`/static-data/v3/champions`, { dataById }));
+export const getChampions = (query = { dataById: true, tags: "keys" }) => {
+  return request.get(getURL(`/static-data/v3/champions`, query));
 };
 
 export const getChampionByID = id => {
@@ -39,8 +39,8 @@ export const getChampionByID = id => {
 };
 
 // spell
-export const getSpells = (dataById = true) => {
-  return request.get(getURL(`/static-data/v3/summoner-spells`, { dataById }));
+export const getSpells = (query = { dataById: true, tags: "key" }) => {
+  return request.get(getURL(`/static-data/v3/summoner-spells`, query));
 };
 
 export const getSpellByID = id => {

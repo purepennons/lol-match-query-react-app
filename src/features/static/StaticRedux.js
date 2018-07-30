@@ -22,6 +22,7 @@ export const Types = {
 export const defaultValues = {
   items: {},
   champions: {},
+  championsKeys: {},
   spells: {}
 };
 
@@ -29,12 +30,22 @@ export const initialState = defaultValues;
 
 export default createReducer(
   [
-    [Types.SET_ITEMS, (state, { payload }) => ({ ...state, items: payload })],
+    [
+      Types.SET_ITEMS,
+      (state, { payload }) => ({ ...state, items: payload.data })
+    ],
     [
       Types.SET_CHAMPIONS,
-      (state, { payload }) => ({ ...state, champions: payload })
+      (state, { payload }) => ({
+        ...state,
+        champions: payload.data,
+        championsKeys: payload.keys
+      })
     ],
-    [Types.SET_SPELLS, (state, { payload }) => ({ ...state, spells: payload })]
+    [
+      Types.SET_SPELLS,
+      (state, { payload }) => ({ ...state, spells: payload.data })
+    ]
   ],
   initialState
 );
@@ -80,7 +91,7 @@ export function* getStaticContent() {
       call(getChampions),
       call(getSpells)
     ]);
-    const data = responses.map(res => res.data.data);
+    const data = responses.map(res => res.data);
     yield put(setItems(data[0]));
     yield put(setChampions(data[1]));
     yield put(setSpells(data[2]));

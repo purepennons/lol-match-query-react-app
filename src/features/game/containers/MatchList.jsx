@@ -12,6 +12,7 @@ const enhance = compose(
       return {
         staticItems: staticData.items,
         staticChampions: staticData.champions,
+        staticChampionsKeys: staticData.championsKeys,
         staticSpells: staticData.spells,
         summonerGames: game.summonerGames,
         summoner: game.summoner,
@@ -27,6 +28,7 @@ const enhance = compose(
 const MatchList = ({
   staticItems,
   staticChampions,
+  staticChampionsKeys,
   staticSpells,
   summoner,
   matches
@@ -47,6 +49,7 @@ const MatchList = ({
             key={match.gameId}
             staticItems={staticItems}
             staticChampions={staticChampions}
+            staticChampionsKeys={staticChampionsKeys}
             staticSpells={staticSpells}
             win={player.win}
             gameCreation={match.gameCreation}

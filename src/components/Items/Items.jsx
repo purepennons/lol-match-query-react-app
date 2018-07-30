@@ -42,11 +42,6 @@ const Items = ({
   );
 };
 
-const ItemType = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string
-};
-
 Items.propTypes = {
   className: PropTypes.string,
   staticItems: PropTypes.object.isRequired,

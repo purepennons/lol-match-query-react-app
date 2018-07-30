@@ -13,15 +13,16 @@ const cx = classnames.bind(styles);
 const pickItemsFromPlayer = player =>
   pick(player, ["item0", "item1", "item2", "item3", "item4", "item5", "item6"]);
 
-const TeamMembers = ({ players, staticChampions }) => {
+const TeamMembers = ({ players, staticChampions, staticChampionsKeys }) => {
   return (
     <ul className={cx("team-block")}>
       {players.map((player, idx) => {
         const championName = get(staticChampions, [player.championId, "name"]);
+        const championKey = get(staticChampionsKeys, [player.championId]);
         return (
           <li key={idx}>
             <img
-              src={getChampionAvatarURL(championName)}
+              src={getChampionAvatarURL(championKey)}
               alt={championName}
               title={championName}
             />
@@ -36,6 +37,7 @@ const TeamMembers = ({ players, staticChampions }) => {
 const Game = ({
   staticItems,
   staticChampions,
+  staticChampionsKeys,
   staticSpells,
   win,
   gameCreation,
@@ -45,6 +47,7 @@ const Game = ({
   opponent
 }) => {
   const championName = get(staticChampions, [player.championId, "name"]);
+  const championKey = get(staticChampionsKeys, [player.championId]);
   const spell1Name = get(staticSpells, [player.spell1Id, "key"]);
   const spell2Name = get(staticSpells, [player.spell2Id, "key"]);
 
@@ -60,7 +63,7 @@ const Game = ({
         <div className={cx("top")}>
           <div className={cx("profile")}>
             <img
-              src={getChampionAvatarURL(championName)}
+              src={getChampionAvatarURL(championKey)}
               alt={championName}
               title={championName}
             />
@@ -101,10 +104,18 @@ const Game = ({
         <Items staticItems={staticItems} {...pickItemsFromPlayer(player)} />
       </div>
       <div className="team">
-        <TeamMembers staticChampions={staticChampions} players={team} />
+        <TeamMembers
+          staticChampions={staticChampions}
+          staticChampionsKeys={staticChampionsKeys}
+          players={team}
+        />
       </div>
       <div className="opponent">
-        <TeamMembers staticChampions={staticChampions} players={opponent} />
+        <TeamMembers
+          staticChampions={staticChampions}
+          staticChampionsKeys={staticChampionsKeys}
+          players={opponent}
+        />
       </div>
     </div>
   );
@@ -136,6 +147,7 @@ const PlayerType = {
 Game.propTypes = {
   staticItems: PropTypes.object.isRequired,
   staticChampions: PropTypes.object.isRequired,
+  staticChampionsKeys: PropTypes.object.isRequired,
   staticSpells: PropTypes.object.isRequired,
   win: PropTypes.boolean,
   gameCreation: PropTypes.number,
