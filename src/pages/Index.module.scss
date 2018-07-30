@@ -16,7 +16,10 @@
   }
 }
 
-.loader {
+.loader,
+.not-found-error {
   text-align: center;
   margin: 50px;
+  font-size: 30px;
+  font-weight: 600;
 }

@@ -1,4 +1,4 @@
-import { clone } from "lodash";
+import { clone, get } from "lodash";
 import {
   all,
   call,
@@ -16,7 +16,7 @@ import {
   getMatchByGameID
 } from "../../apis/requests";
 import { ajax, normalize } from "../../shared/utils/";
-import { addError } from "../error/ErrorRedux";
+import { addError, removeError } from "../error/ErrorRedux";
 
 /*
 * ---------------- Other Exports -----------------
@@ -193,6 +193,7 @@ export function* loadMoreGames() {
 
 export function* queryGamesByNameWorker({ payload }) {
   yield put(resetState());
+  yield put(removeError());
   yield put(setFetchingStatus(true));
   try {
     const { name } = payload;
@@ -203,6 +204,12 @@ export function* queryGamesByNameWorker({ payload }) {
     // first time fetching
     yield call(loadMoreGames);
   } catch (err) {
+    const code = get(err, ["response", "status"]);
+    if (code === 404) {
+      yield put(
+        addError({ title: "Not Found Error", desc: `data not found`, obj: err })
+      );
+    }
   } finally {
     yield put(setFetchingStatus(false));
   }
