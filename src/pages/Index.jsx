@@ -37,11 +37,12 @@ const Index = ({
       <div className={cx("game-history")}>
         <MatchList />
       </div>
-      {hasMoreData && (
-        <button className={cx("load-more-btn")} onClick={loadMore}>
-          Load More
-        </button>
-      )}
+      {hasMoreData &&
+        !isFetching && (
+          <button className={cx("load-more-btn")} onClick={loadMore}>
+            Load More
+          </button>
+        )}
       {isFetching && <p className={cx("loader")}>Loading...</p>}
     </div>
   );

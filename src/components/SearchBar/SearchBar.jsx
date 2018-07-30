@@ -33,13 +33,23 @@ class SearchBar extends Component {
     this.props.onSearch(this.state.text);
   };
 
+  handleKeyPress = event => {
+    if (event.key !== "Enter" || !this.state.text) return;
+    this.props.onSearch(this.state.text);
+  };
+
   render() {
     const { text } = this.state;
     const { className } = this.props;
     return (
       <div className={cx(className, "search-bar")}>
         <label>
-          <input type="text" value={text} onChange={this.handleInput} />
+          <input
+            type="text"
+            value={text}
+            onChange={this.handleInput}
+            onKeyPress={this.handleKeyPress}
+          />
         </label>
         <button onClick={this.handleClick}>Search</button>
       </div>

@@ -149,7 +149,7 @@ Game.propTypes = {
   staticChampions: PropTypes.object.isRequired,
   staticChampionsKeys: PropTypes.object.isRequired,
   staticSpells: PropTypes.object.isRequired,
-  win: PropTypes.boolean,
+  win: PropTypes.bool,
   gameCreation: PropTypes.number,
   gameDuration: PropTypes.number,
   player: PropTypes.shape(PlayerType),

@@ -18,6 +18,11 @@
   h2 {
     font-size: rem(20px);
     font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin: 3px 0;
   }
 }
 
@@ -29,6 +34,7 @@
     @include ellipsis($width);
     width: $width;
     height: $height;
+    margin: 2px;
 
     img {
       height: 100%;
@@ -40,17 +46,22 @@
       display: inline-block;
       height: 100%;
       line-height: $height;
+      margin-left: 3px;
     }
   }
 }
 
 .champion {
   .top {
+    margin: 0 10px 20px 10px;
+
     .profile {
+      width: 50px;
       height: 50px;
       display: inline-block;
       border: 2px solid $borderColor;
       border-radius: 50%;
+      vertical-align: top;
 
       img {
         border-radius: 50%;
@@ -60,6 +71,7 @@
 
     .spells {
       display: inline-block;
+      vertical-align: top;
 
       img {
         height: 25px;
