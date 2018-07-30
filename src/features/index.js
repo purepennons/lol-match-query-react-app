@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import { call, fork, all } from "redux-saga/effects";
 
 import error, { saga as errorSaga } from "./error/ErrorRedux";
+import shared, { saga as sharedSaga } from "./shared/SharedRedux";
 import game, { saga as gameSaga } from "./game/GameRedux";
 import staticData, { saga as staticSaga } from "./static/StaticRedux";
 
@@ -17,6 +18,7 @@ export const Types = {
  */
 export const rootReducer = combineReducers({
   error,
+  shared,
   game,
   staticData
 });
@@ -24,7 +26,7 @@ export const rootReducer = combineReducers({
 /*
  * ---------------- root saga -----------------
  */
-const sagas = [errorSaga, gameSaga, staticSaga];
+const sagas = [errorSaga, sharedSaga, gameSaga, staticSaga];
 
 // Because we want to support HMR with redux-saga,
 // we must return a new saga function.
