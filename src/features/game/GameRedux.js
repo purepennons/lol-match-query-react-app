@@ -15,7 +15,7 @@ import {
   getMatchesByAccountID,
   getMatchByGameID
 } from "../../apis/requests";
-import { ajax, normalize } from "../../shared/utils/";
+import { normalize } from "../../shared/utils/";
 import { addError, removeError } from "../error/ErrorRedux";
 
 /*
@@ -172,7 +172,7 @@ export function* initGameQuery(accountId) {
 }
 
 export function* loadMoreGames() {
-  const { summoner, summonerGames, page } = yield select(({ game }) => game);
+  const { summonerGames, page } = yield select(({ game }) => game);
   const { perPages, currentPage } = page;
   if (perPages * currentPage >= summonerGames.length) return;
   const startIndex = perPages * currentPage;

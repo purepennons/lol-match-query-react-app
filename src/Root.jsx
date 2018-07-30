@@ -8,7 +8,6 @@ import Fatal from "./pages/error/Fatal";
 import store from "./reduxStore";
 import { logger } from "./shared/utils";
 import { Setting } from "./shared/constants";
-import styles from "./Root.scss";
 
 import "./Root.scss";
 

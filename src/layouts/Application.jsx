@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Router, Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
