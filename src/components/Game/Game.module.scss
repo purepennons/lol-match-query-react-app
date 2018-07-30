@@ -5,9 +5,10 @@
 .game {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border: 3px solid $borderColor;
+  border-radius: 3px;
   padding: 10px;
   margin: 20px;
 }
@@ -28,20 +29,20 @@
 
 .team-block {
   li {
-    $width: 100px;
     $height: 22px;
 
-    @include ellipsis($width);
-    width: $width;
-    height: $height;
+    height: 22px;
     margin: 2px;
 
     img {
-      height: 100%;
+      height: 22px;
+      width: 22px;
       vertical-align: top;
     }
 
     span {
+      @include ellipsis(80px);
+      width: 80px;
       vertical-align: top;
       display: inline-block;
       height: 100%;
