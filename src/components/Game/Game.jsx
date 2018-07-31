@@ -20,9 +20,13 @@ const TeamMembers = ({ players, staticChampions, staticChampionsKeys }) => {
         const championName = get(staticChampions, [player.championId, "name"]);
         const championKey = get(staticChampionsKeys, [player.championId]);
         return (
-          <li key={idx} title={championName}>
-            <img src={getChampionAvatarURL(championKey)} alt={championName} />
-            <span>{player.summonerName}</span>
+          <li key={idx}>
+            <img
+              src={getChampionAvatarURL(championKey)}
+              alt={championName}
+              title={championName}
+            />
+            <span title={player.summonerName}>{player.summonerName}</span>
           </li>
         );
       })}
