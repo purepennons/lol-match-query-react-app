@@ -16,7 +16,7 @@ const sagaMiddleware = createSagaMiddleware();
 const reduxLogger = createLogger();
 
 const composeEnhancers = __DEV__
-  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ serialize: true }) || compose
   : compose;
 const middleware = [reduxThunk, sagaMiddleware];
 
