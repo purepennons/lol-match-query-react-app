@@ -2,7 +2,6 @@ import { all, call, put } from "redux-saga/effects";
 import createReducer from "@funnyfoo/create-reducer-redux";
 
 import { getChampions, getItems, getSpells } from "../../apis/requests";
-import { setInitializingState } from "../shared/SharedRedux";
 
 /*
 * ---------------- Other Exports -----------------
@@ -78,12 +77,7 @@ export const setSpells = spells => ({
  */
 export const saga = {
   init: function* init() {
-    yield put(setInitializingState(true));
-    try {
-      yield call(getStaticContent);
-    } finally {
-      yield put(setInitializingState(false));
-    }
+    yield call(getStaticContent);
   },
   process: function* process() {
     yield all([]);

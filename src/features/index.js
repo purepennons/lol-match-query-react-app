@@ -1,8 +1,11 @@
 import { combineReducers } from "redux";
-import { call, fork, all } from "redux-saga/effects";
+import { call, fork, all, put } from "redux-saga/effects";
 
 import error, { saga as errorSaga } from "./error/ErrorRedux";
-import shared, { saga as sharedSaga } from "./shared/SharedRedux";
+import shared, {
+  saga as sharedSaga,
+  setInitializingState
+} from "./shared/SharedRedux";
 import game, { saga as gameSaga } from "./game/GameRedux";
 import staticData, { saga as staticSaga } from "./static/StaticRedux";
 
@@ -33,7 +36,10 @@ const sagas = [errorSaga, sharedSaga, gameSaga, staticSaga];
 // show details: https://stackoverflow.com/a/40783428
 export function getRootSaga() {
   return function* rootSaga() {
+    yield put(setInitializingState(true));
     yield all(sagas.map(saga => call(saga.init)));
+    yield put(setInitializingState(false));
+
     yield all(sagas.map(saga => fork(saga.process)));
   };
 }
