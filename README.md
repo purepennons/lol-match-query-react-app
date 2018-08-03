@@ -1,6 +1,5 @@
-## Install
-```
-$ yarn add classnames redux react-redux redux-logger redux-thunk redux-saga reset-css sass-rem lodash react-router-dom history store @funnyfoo/create-reducer-redux
+# lol-match-query-react-app
+A League of Legends matching history query APP implementing with react, redux and redux-saga.
 
-$ yarn add prettier husky lint-staged enzyme enzyme-adapter-react-16 node-sass react-hot-loader react-styleguidist@6.5.3 --dev
-```
+## Preview
+<img src="./lol-match-query-react-app.png" alt="preview" />

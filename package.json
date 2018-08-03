@@ -1,5 +1,5 @@
 {
-  "name": "lol-stats-app",
+  "name": "lol-match-query-react-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
